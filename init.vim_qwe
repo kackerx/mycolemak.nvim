@@ -1,0 +1,240 @@
+let mapleader=" "
+let g:maplocalleader = ","
+
+call plug#begin('~/.config/nvim/plugged')
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'tpope/vim-surround'
+Plug '/Users/apple/.fzf/bin/fzf'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'easymotion/vim-easymotion'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-commentary'
+Plug 'kevinhwang91/rnvimr'
+Plug 'luochen1990/rainbow'
+Plug 'gcmt/wildfire.vim'
+" Plug 'puremourning/vimspector'
+Plug 'voldikss/vim-floaterm'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"if has('nvim')
+""  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+""  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  "  Plug 'roxma/vim-hug-neovim-rpc'
+"  "endif
+call plug#end()
+" =========================================== vimspector ======================
+let g:vimspector_enable_mappings = 'HUMAN'
+" =========================================== which-key ======================
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :WhichKey ','<CR>
+let g:which_key_map =  {}
+
+" `name` 是一个特殊字段，如果 dict 里面的元素也是一个 dict，那么表明一个 group，比如 `+file`, 就会高亮和显示 `+file` 。默认是 `+prefix`.
+
+" =======================================================
+" 基于已经存在的快捷键映射，直接使用一个字符串说明介绍信息即可
+" =======================================================
+" You can pass a descriptive text to an existing mapping.
+
+let g:which_key_map.f = { 'name' : '+file' }
+
+nnoremap <silent> <leader>fs :update<CR>
+let g:which_key_map.f.s = 'save-file'
+
+nnoremap <silent> <leader>fd :e $MYVIMRC<CR>
+let g:which_key_map.f.d = 'open-vimrc'
+
+nnoremap <silent> <leader>oq  :copen<CR>
+nnoremap <silent> <leader>ol  :lopen<CR>
+
+" let g:XkbSwitchIMappings = ['ru']
+" echo libcall(g:XkbSwitchLib, 'Xkb_Switch_getXkbLayout', '')
+" call libcall(g:XkbSwitchLib, 'Xkb_Switch_setXkbLayout', 'us')
+"============================================
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
+" map s <Plug>Sneak_s
+" let g:sneak#label = 1
+"============================================easymotion
+nmap w <Plug>(easymotion-s2)
+map F <Plug>(easymotion-b)
+map f <Plug>(easymotion-w)
+nnoremap <C-f> :FZF<CR>
+
+"============================================rainbow
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+      \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+      \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+      \   'operators': '_,\|+\|-_',
+      \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+      \   'separately': {
+      \       '*': {},
+      \       'tex': {
+      \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+      \       },
+      \       'css': 0,
+      \   }
+      \}
+"===================gg
+let g:UltiSnipsSnippetDirectories=[$HOME."/.local/share/nvim/plugged/vim-snippets"]
+autocmd FileType python nnoremap <LocalLeader>l :0,$!yapf<CR>
+"============tagbar===
+nnoremap <LEADER>t :TagbarToggle<CR>
+let g:tagbar_ctags_bin = '/usr/bin/ctags'
+let g:tagbar_width=25
+let g:tagbar_sort = 0
+let g:tagbar_autopreview = 1
+let g:tagbar_autofocus = 1
+"============================================colorscheme
+colorscheme neodark
+let g:neodark#use_256color = 1 " default: 0
+let g:neodark#background = '#202020'
+let g:lightline = {}
+let g:lightline.colorscheme = 'neodark'
+"==============Ranger
+
+noremap <leader>f :w<CR>:RangerNewTab<CR>
+let g:vim_markdown_folding_disabled = 1
+" hi Normal ctermfg=252 ctermbg=none
+" let g:neodark#terminal_transparent = 1 " default: 0
+"============================================= coc.nvim
+let g:coc_global_extensions = ['coc-json']
+
+inoremap <silent><expr> <c-o> coc#refresh()
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+" xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+" nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+"
+imap <C-l> <plug>(coc-snippets-expand-jump)
+
+let g:coc_explorer_global_presets = {
+\   'kacker': {
+\      'root-uri': '~/apple',
+\      'width': 30
+\   },
+\ }
+noremap <leader>e :CocCommand explorer --preset kacker<CR>
+"============================================专用映射
+
+nnoremap U <C-r>
+nnoremap <C-j> <C-d>
+nnoremap <C-k> <C-u>
+nnoremap <C-a> <C-z>
+nnoremap cw ciw
+nnoremap dw diw
+nnoremap c' ci'
+nnoremap c" ci"
+nnoremap c[ ci[
+nnoremap c( ci(
+nnoremap c{ ci{
+
+nnoremap \ :noh<CR>
+" map <C-c> "+y
+" map <C-p> "+p
+
+vnoremap K 5k
+vnoremap J 5j
+vnoremap H 5h
+vnoremap L 5l
+
+nnoremap tt zc
+" nnoremap <CR> G
+noremap K 5k
+noremap J 5j
+noremap H 5h
+noremap L 5l
+
+noremap m ~
+
+" 书签
+" nnoremap , m
+nnoremap <leader>, :marks<CR>
+nnoremap `a mA  
+nnoremap ,a 'A  
+nnoremap `r mR  
+nnoremap ,r `R  
+nnoremap `s mS  
+nnoremap ,s `S  
+nnoremap `d mD  
+nnoremap ,d `D  
+nnoremap `t mT  
+nnoremap ,t `T  
+
+
+nnoremap T :w <CR>
+nnoremap Q :q <CR>
+" nnoremap ; :
+" nnoremap : ;
+" nnoremap S :source ~/.config/nvim/init.vim <CR>
+" map U <C-r>
+"sl 向右分屏
+" nnoremap se :set splitright<CR>:vsplit<CR>
+" nnoremap sn :set splitbelow<CR>:split<CR>
+" 空格+方向键，切换光标所在窗口
+nnoremap <LEADER>i <C-w>l
+nnoremap <LEADER>h <C-w>h
+nnoremap <LEADER>e <C-w>k
+nnoremap <LEADER>n <C-w>j
+nnoremap <LEADER>1 <C-w>w
+" inoremap <C-i> <esc>la
+inoremap <C-e> #
+" 标签页﹡＆……％df。。。。。。。df.。。。。df。。。。
+nnoremap tn :tabe<CR>
+" nnoremap <C-w> :-tabnext<CR>
+" nnoremap <C-e> :+tabnext<CR>
+inoremap <C-d> __import__('ipdb').set_trace() # XXX BREAKPOINT!
+
+set fdm=indent
+set foldlevel=99
+set noswapfile
+set noshowmode
+set ignorecase
+" set relativenumber
+set nu
+set showcmd
+set wildmenu
+set hidden
+set colorcolumn=200
+set updatetime=100
+set hlsearch
+exec "nohlsearch"
+set incsearch
+set ignorecase
+set smartcase
+set shortmess+=c
+set cursorline
+set noexpandtab
+set tabstop=2
+set shiftwidth=2
+set scrolloff=5
+se mouse+=a
+set re=1
+set ttyfast
+set lazyredraw
+" set clipboard+=unnamed
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\""
+"
+"
+set laststatus=2
+set autochdir
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
