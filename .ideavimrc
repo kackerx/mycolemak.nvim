@@ -1,0 +1,24 @@
+let mapleader=" "
+
+set easymotion
+set surround
+set commentary
+set argtextobj
+set highlightedyank
+set sneak
+set multiple-cursors
+set ReplaceWithRegister
+set textobj-entire
+set exchange
+let g:highlightedyank_highlight_duration = "1000"
+set keep-english-in-normal
+
+
+source ~/.vimrc
+
+map <leader>f <Plug>(easymotion-s)
+map <leader>e <Plug>(easymotion-f)
+map s <Plug>(easymotion-w)
+map S <Plug>(easymotion-b)
+
+set keep-english-in-normal-and-restore-in-insert
