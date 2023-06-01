@@ -1,29 +1,22 @@
 package main
 
 import (
-	"errors"
-	"fmt"
-	"testing"
+    "errors"
+    "fmt"
+    "testing"
 )
 
 func TestGO(t *testing.T) {
-	fmt.Println(1)
-	println(2)
-
-	err := errors.New("k")
-	if err != nil {
-		return nil
-	}
-
+    a := []int{1, 2}
+	
 }
 
 func TestTT(t *testing.T) {
-	fmt.Println(1)
-	fmt.Println(2)
+    fmt.Println(1)
+    fmt.Println(2)
 }
 
 type Us struct {
-	Name string
-	Age  int
+    Name string
+    Age  int
 }
-

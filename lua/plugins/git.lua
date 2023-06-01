@@ -90,8 +90,8 @@ return {
                     map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
                     --
                     -- Text object
-                    map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-                    map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+                    -- map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+                    -- map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
                 end
             })
         end,

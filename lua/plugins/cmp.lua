@@ -129,7 +129,7 @@ return {
 					{ name = "treesitter" },
 					{ name = "crates" },
 					-- { name = "copilot",    group_index = 2 },
-					{ name = "copilot",    priority = 1 },
+					-- { name = "copilot",    priority = 1 },
 				},
 				source_names = {
 					nvim_lsp = "(LSP)",

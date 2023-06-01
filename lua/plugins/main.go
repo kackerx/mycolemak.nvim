@@ -1,16 +1,36 @@
 package main
 
 import (
-    "errors"
     "fmt"
 )
 
 func main() {
-	err := errors.New("test/arst/arst")
-	if err != nil {
-		return
+
+	a := []int{1, 2, 3}
+
+	for i := 0; i < len(a); i++ {
+		fmt.Println(a[i])
 	}
 
+	for i, v := range a {
+		fmt.Println(i, v)
+	}
+
+	err := foo(1, "a", "b")
+	if err != nil {
+
+	}
+
+}
+
+func Max(a, b int) (int, error) {
+	if a > b {
+		return a, nil
+	} else if a < b {
+		return b, nil
+	}
+
+	return 0, nil
 }
 
 // foo arst
@@ -26,7 +46,6 @@ type User struct {
 	Age  int    `json:"hehe"`
 	hehe int
 }
-arst
 
 // User arst
 type Use struct {

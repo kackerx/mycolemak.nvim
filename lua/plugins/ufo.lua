@@ -99,6 +99,7 @@ return {
 	{
 		"Snyssfx/goerr-nvim",
 		event = "BufReadPre",
+		enabled = false, 
 		config = function()
 			vim.g.goerr_indent_error = 1
 			vim.g.goerr_nvim_indent_level = 4

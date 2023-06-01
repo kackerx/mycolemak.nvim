@@ -75,6 +75,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	command = "set fo-=c fo-=r fo-=o",
 })
 
+vim.cmd('autocmd BufReadPost * unmap v')
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+-- 	pattern = "",
+-- 	command = "unmap v",
+-- })
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+-- 	pattern = "",
+-- 	command = "unmap vi",
+-- })
+
 -- Opens PDF files in sioyek instead of viewing the binary in Neovim
 vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "*.pdf",
@@ -94,10 +104,10 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
-augroup ScrollbarInit
-  autocmd!
-  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
-  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
-augroup end
+	augroup ScrollbarInit
+			autocmd!
+		autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
+		autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+		autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+	augroup end
 ]]

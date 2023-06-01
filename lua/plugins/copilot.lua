@@ -21,6 +21,7 @@ return {
     {
         "zbirenbaum/copilot-cmp",
         lazy = true,
+		enabled = false,
         event = { "InsertEnter", "LspAttach" },
 		fix_pairs = true,
         after = { "copilot.lua" },
