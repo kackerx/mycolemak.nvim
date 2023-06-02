@@ -19,10 +19,6 @@ func main() {
 		fmt.Println("kacker")
 	}
 
-	u := &User{"ka", 1, 1}
-
-	fmt.Println(u)
-
 	foo(1, "2", "kk")
 	foo(1, "k", "kk")
 	foo(1, "k", "k")

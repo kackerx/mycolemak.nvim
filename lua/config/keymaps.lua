@@ -165,7 +165,7 @@ map("n", "<leader>L", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 map("n", "<D-c>", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 
 -- nvim-tree
-map({ "n", "i" }, "<LocalLeader>eb", "<cmd>NvimTreeFindFileToggle<cr>", { desc = "open or close file explore" })
+map({ "n", "i" }, "<LocalLeader>eb", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "open or close file explore" })
 map({ "n", "i" }, "<LocalLeader>ec", "<cmd>NvimTreeFindFile<cr>", { desc = "find current buf file in explore" })
 
 ------------ Telescope

@@ -7,11 +7,12 @@ return {
 			local bufferline = require('bufferline')
 			bufferline.setup {
 				options = {
-					view = "multiwindow",
+					-- view = "multiwindow",
+					view = "tabpages",
 					diagnostics = "nvim_lsp",
-					separator_style = "thick",
+					separator_style = "none",
 					-- style_preset = bufferline.style_preset.minimal,
-					always_show_bufferline = false,
+					always_show_bufferline = true,
 					diagnostics_indicator = function(_, _, diag)
 						local icons = require("config").icons.diagnostics
 						local ret = (diag.error and icons.Error .. diag.error .. " " or "")
@@ -19,7 +20,7 @@ return {
 						return vim.trim(ret)
 					end,
 					indicator = {
-						icon = '▎', -- this should be omitted if indicator style is not 'icon'
+						icon = ' @ ', -- this should be omitted if indicator style is not 'icon'
 						style = 'icon',
 					},
 					offsets = {
@@ -27,14 +28,14 @@ return {
 							filetype = "NvimTree",
 							text = "K",
 							highlight = "Directory",
-							text_align = "left",
+							text_align = "center",
 						},
 					},
-					hover = {
-						enabled = true,
-						delay = 200,
-						reveal = { 'close' }
-					},
+					-- hover = {
+					-- 	enabled = true,
+					-- 	delay = 200,
+					-- 	reveal = { 'close' }
+					-- },
 				},
 				-- position = "bottom", -- can be "top" or "bottom"
 			}
