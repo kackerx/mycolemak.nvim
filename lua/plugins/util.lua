@@ -32,7 +32,28 @@ return {
 		"windwp/nvim-autopairs",
 		enabled = true,
 		event = "VeryLazy",
-		config = function() require("nvim-autopairs").setup {} end
+		config = function()
+			-- local npairs = require('nvim-autopairs')
+
+			-- 在行末输入 ({[ 时自动补全右括号并且将光标移动到输入位置
+			-- local Rule = require('nvim-autopairs.rule')
+			-- npairs.add_rules({
+			-- 	Rule("%(.*%)%s%->%s$", "->", " -> ", { "c" }),
+			-- 	Rule("%(.*%)%s:%s$", ":", " : ", { "c" }),
+			-- 	Rule("%(.*%)%s,%s$", ",", ", ", { "c" }),
+			-- 	Rule("%(.*%)%s;%s$", ";", "; ", { "c" }),
+			-- 	Rule("%(.*%)%s=%s$", "=", " = ", { "c" }),
+			-- 	Rule("%(.*%)%s[%+%-%*/%%%^~|&<>!=]=%s$", "", " ${1}= ", { "c" }),
+			-- 	Rule("%(.*%)%s[%+%-%*/%%%^~|&<>!]=%s$", "", " ${1}= ", { "c" }),
+			-- 	Rule("%(.*%)%s[%+%-%*/%%%^~|&<>]=%s$", "", " ${1}${1}= ", { "c" }),
+			-- 	Rule("%(.*%)%s[%+%-%*/%%%^~|&<>]$", "", " ${1}${1}", { "c" }),
+			-- 	Rule("%(.*%)%s[({%[%<]$", "", ")${1}", { "c", "r", "t" }),
+			-- })
+
+			-- 启用自动补全
+			-- npairs.enable()
+			require("nvim-autopairs").setup {}
+		end
 	},
 	{
 		'phaazon/hop.nvim',
@@ -65,7 +86,7 @@ return {
 	-- 			-- For Windows/WSL, default: "im-select.exe"
 	-- 			-- For macOS, default: "im-select"
 	-- 			-- For Linux, default: "fcitx5-remote"
-	-- 			default_command         = 'im-select', 
+	-- 			default_command         = 'im-select',
 	--
 	-- 			-- Restore the default input method state when the following events are triggered
 	-- 			set_default_events      = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },

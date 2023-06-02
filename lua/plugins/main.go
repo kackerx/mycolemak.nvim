@@ -1,42 +1,70 @@
 package main
 
 import (
-    "fmt"
+	"errors"
+	"fmt"
 )
 
+const PAY = 1
+
 func main() {
-
-	a := []int{1, 2, 3}
-
-	for i := 0; i < len(a); i++ {
-		fmt.Println(a[i])
-	}
-
-	for i, v := range a {
-		fmt.Println(i, v)
-	}
-
-	err := foo(1, "a", "b")
+	a := "k"
+	fmt.Printf("%s\n", a)
+	err := errors.New("test/arst/arst")
 	if err != nil {
-
+		return
 	}
 
-}
-
-func Max(a, b int) (int, error) {
-	if a > b {
-		return a, nil
-	} else if a < b {
-		return b, nil
+	for i := 0; i < 11; i++ {
+		fmt.Println("kacker")
 	}
 
-	return 0, nil
+	u := &User{"ka", 1, 1}
+
+	fmt.Println(u)
+
+	foo(1, "2", "kk")
+	foo(1, "k", "kk")
+	foo(1, "k", "k")
+
+	b := make([]int, 0)
+	b = append(b, 1)
+
+	m := make(map[string]string)
+	M := make(map[string]any)
+
+	c := []int{1, 2}
+	c = append(c, 3)
+
+	fmt.Println(m)
+	fmt.Println(M)
+
+	for i := 0; i < 10; i++ {
+		fmt.Println("kacker")
+	}
+
 }
 
 // foo arst
-func foo(a int, b, c string) error {
+func foo(a int, b, c string) chan int {
+	fmt.Println("kacker")
 	fmt.Println(a)
+	fmt.Println(b)
+	fmt.Println(c)
+	fmt.Println("kacker")
 
+	ch := make(chan int)
+	go func() {
+		for i := 0; i < 10; i++ {
+			ch <- i
+		}
+		defer close(ch)
+	}()
+	return ch
+}
+
+// Bar TEST COMMENT
+func Bar(a int, b, c string) error {
 	return nil
 }
 
@@ -48,23 +76,25 @@ type User struct {
 }
 
 // User arst
-type Use struct {
+type use struct {
 	Name string `json:"st" db:"ss"`
 	Age  int    `json:"hehe"`
 	hehe int
 }
 
 // get arst
-func (*Use) get() {
+func (*use) get() {
 }
 
-func (*Use) set() {
+func (*use) set() {
 }
 
 type IGet interface {
 	get()
 }
 
-type ISet interface {
+type iSet interface {
 	set()
 }
+
+// User make a User

@@ -47,8 +47,8 @@ return {
 					icons_enabled = true,
 					theme = hardhacker_theme,
 					-- component_separators = { left = "░", right = "░" },
-					component_separators = {},
-					section_separators = {},
+					section_separators = { "", "" },
+					component_separators = { "", "" },
 					disabled_filetypes = {
 						statusline = {},
 						winbar = {},

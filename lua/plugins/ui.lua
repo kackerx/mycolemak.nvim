@@ -66,6 +66,7 @@ return {
 			max_width = function()
 				return math.floor(vim.o.columns * 0.75)
 			end,
+			background_colour = "#000000",
 		},
 		config = function(_, opts)
 			require("notify").setup(opts)

@@ -57,6 +57,7 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
+			"zbirenbaum/copilot-cmp",
 		},
 		opts = function()
 			local cmp = require("cmp")
@@ -117,24 +118,42 @@ return {
 				},
 				-- sources = cmp.config.sources({
 				sources = {
-					{ name = "nvim_lsp",   priority = 2 },
+					{ name = "nvim_lsp",   priority = 2,   group_index = 2 },
 					{ name = "path" },
-					{ name = "luasnip",    priority = 4, option = { show_autosnippets = false } },
+					{ name = "luasnip",    priority = 4,   option = { show_autosnippets = false }, group_index = 2 },
 					{ name = "cmp_tabnine" },
 					{ name = "nvim_lua" },
-					{ name = "buffer" },
+					{ name = "buffer", group_index = 2 },
 					{ name = "spell" },
 					{ name = "calc" },
 					{ name = "emoji" },
 					{ name = "treesitter" },
 					{ name = "crates" },
-					-- { name = "copilot",    group_index = 2 },
+					{ name = "copilot",    group_index = 2 },
 					-- { name = "copilot",    priority = 1 },
 				},
 				source_names = {
 					nvim_lsp = "(LSP)",
 					luasnip = "(SNIP)",
 					copilot = "(AI)",
+				},
+				sorting = {
+					priority_weight = 2,
+					comparators = {
+						require("copilot_cmp.comparators").prioritize,
+
+						-- Below is the default comparitor list and order for nvim-cmp
+						cmp.config.compare.offset,
+						-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+						cmp.config.compare.exact,
+						cmp.config.compare.score,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.locality,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
 				},
 				-- formatting = {
 				--     format = function(_, item)

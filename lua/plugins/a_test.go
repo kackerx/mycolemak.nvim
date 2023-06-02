@@ -7,8 +7,14 @@ import (
 )
 
 func TestGO(t *testing.T) {
-    a := []int{1, 2}
-	
+	fmt.Println(1)
+	println(2)
+
+	err := errors.New("k")
+
+	if err != nil {
+		return nil
+	}
 }
 
 func TestTT(t *testing.T) {

@@ -5,10 +5,17 @@ return {
 		version = false, -- last release is way too old and doesn't work on Windows
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", "HiPhish/nvim-ts-rainbow2",
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", "HiPhish/nvim-ts-rainbow2", 
 			'nvim-treesitter/playground' },
 		opts = {
-			highlight = { enable = true },
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = true,
+				-- custom_captures = {
+				-- 	-- 把 error 类型高亮为 ErrorMsg 颜色
+				-- 	["type.error"] = "ErrorMsg",
+				-- }
+			},
 			indent = { enable = true, disable = { "python" } },
 			context_commentstring = { enable = true, enable_autocmd = false },
 			ensure_installed = {
@@ -38,21 +45,21 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
-			textobjects = {
-				select = {
-					enable = true,
-					keymaps = {
-						-- 选择一个函数
-						["af"] = "@function.outer",
-						-- 选择函数内部
-						["if"] = "@function.inner",
-						-- 选择一个参数
-						["aa"] = "@parameter.inner",
-						-- 选择一个参数外部
-						["ia"] = "@parameter.outer",
-					},
-				},
-			},
+			-- textobjects = {
+			-- 	select = {
+			-- 		enable = true,
+			-- 		keymaps = {
+			-- 			-- 选择一个函数
+			-- 			["af"] = "@function.outer",
+			-- 			-- 选择函数内部
+			-- 			["if"] = "@function.inner",
+			-- 			-- 选择一个参数
+			-- 			["aa"] = "@parameter.inner",
+			-- 			-- 选择一个参数外部
+			-- 			["ia"] = "@parameter.outer",
+			-- 		},
+			-- 	},
+			-- },
 			rainbow = {
 				enable = false,
 				disable = { "jsx", "cpp" },
@@ -81,7 +88,7 @@ return {
 		playground = {
 			enable = true,
 			disable = {},
-			updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
+			updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
 			persist_queries = false, -- Whether the query persists across vim sessions
 			keybindings = {
 				toggle_query_editor = 'o',
