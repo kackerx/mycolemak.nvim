@@ -27,10 +27,11 @@ func main() {
 	b = append(b, 1)
 
 	m := make(map[string]string)
+
 	M := make(map[string]any)
 
 	c := []int{1, 2}
-	c = append(c, 3)
+	c = append(c, 2)
 
 	fmt.Println(m)
 	fmt.Println(M)

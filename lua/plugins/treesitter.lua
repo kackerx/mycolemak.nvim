@@ -45,21 +45,21 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
-			-- textobjects = {
-			-- 	select = {
-			-- 		enable = true,
-			-- 		keymaps = {
-			-- 			-- 选择一个函数
-			-- 			["af"] = "@function.outer",
-			-- 			-- 选择函数内部
-			-- 			["if"] = "@function.inner",
-			-- 			-- 选择一个参数
-			-- 			["aa"] = "@parameter.inner",
-			-- 			-- 选择一个参数外部
-			-- 			["ia"] = "@parameter.outer",
-			-- 		},
-			-- 	},
-			-- },
+			textobjects = {
+				select = {
+					enable = true,
+					keymaps = {
+						-- 选择一个函数
+						["af"] = "@function.outer",
+						-- 选择函数内部
+						["if"] = "@function.inner",
+						-- 选择一个参数
+						["aa"] = "@parameter.inner",
+						-- 选择一个参数外部
+						["ia"] = "@parameter.outer",
+					},
+				},
+			},
 			rainbow = {
 				enable = false,
 				disable = { "jsx", "cpp" },

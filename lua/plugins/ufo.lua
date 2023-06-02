@@ -69,7 +69,7 @@ return {
 					win_config = {
 						border = { '', '─', '', '', '', '─', '', '' },
 						winhighlight = 'Normal:Folded',
-						winblend = 0
+						winblend = 0, 
 					},
 					mappings = {
 						scrollU = '<C-u>',
